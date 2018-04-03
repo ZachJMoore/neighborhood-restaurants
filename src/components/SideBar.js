@@ -8,8 +8,7 @@ class SideBar extends Component {
             searchValue: ""
         }
         this.updateValue = (event) => {
-            this.setState({searchValue: event.target.value})
-            this.filterRestaurants()
+            this.setState({searchValue: event.target.value}, this.filterRestaurants)
         }
         this.filterRestaurants = () => {
             const match = new RegExp(escapeRegExp(this.state.searchValue), "i")
@@ -24,6 +23,7 @@ class SideBar extends Component {
             this.props.updateFiltered(filtered)
         }
     }
+    
     render(){
         return (<nav className="nav">
             <h1 className="text-center nav-title">Neighborhood Restaurants</h1>
