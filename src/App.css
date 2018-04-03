@@ -1,0 +1,136 @@
+img,
+embed,
+object,
+video {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", "Open Sans", sans-serif;
+}
+
+p,
+a,
+span,
+small,
+label,
+input,
+button {
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column-left {
+    align-items: flex-start;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Map */
+
+.circle {
+  border: 3px solid black;
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  transform: translateX(-15px) translateY(-15px)
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 350px;
+    height: 100vh;
+}
+.marker {
+    background: linear-gradient(45deg, rgb(247, 25, 25), rgb(255, 155, 155));
+    border: 3px solid black;
+    width: 24px;
+    height: 24px;
+    border-radius: 100px 100px 100px 0;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -36px;
+    left: -15px;
+    cursor: pointer;
+    color: #fff0;
+    font-size: 0;
+}
+
+.close {
+    position: absolute;
+    top: -4px;
+    right: 4px;
+    width: 15px;
+    height: 15px;
+    font-size: 25px;
+    color: #000;
+    text-decoration: none;
+}
+.close:hover {
+    cursor: pointer;
+}
+
+.marker:hover ~ .restaurant-details{
+    display: block;
+}
+
+.restaurant-details{
+    z-index: 10;
+    display: none;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 2px 2px 10px 1px #0004;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+}
+
+.details-shown {
+    display: block;
+}
