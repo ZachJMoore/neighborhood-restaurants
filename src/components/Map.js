@@ -20,10 +20,6 @@ class GoogleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <Circle 
-          lat={42.1192932}
-          lng={-77.960866}
-          />
           {this.props.restaurants.map(restaurant => {
               let rest = restaurant.restaurant
               return <RestaurantMarker restaurant={rest} key={rest.id} lat={rest.location.latitude} lng={rest.location.longitude}/>
@@ -32,12 +28,6 @@ class GoogleMap extends Component {
       </div>
     );
   }
-}
-
-let Circle = () => {
-    return (
-        <div className="circle"></div>
-    )
 }
 
 export default GoogleMap;

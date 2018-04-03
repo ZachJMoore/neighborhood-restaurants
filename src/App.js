@@ -11,13 +11,16 @@ class App extends Component {
       restaurants: [],
       filtered: [],
     }
+    this.updateFiltered = (array) => {
+      this.setState({filtered: array})
+    }
   }
 
   componentDidMount(){
     getRestaurants().then(data => {
       console.log(data.restaurants)
       this.setState({restaurants: data.restaurants})
-      this.setState({filtered: [data.restaurants[0]]})
+      this.setState({filtered: data.restaurants})
     }).catch(error => {
       alert(error.message)
     })
@@ -25,8 +28,8 @@ class App extends Component {
   render() {
     return (
       <div className="App flex-container">
-        <SideBar restaurants={this.state.restaurants}/>
-        <GoogleMap restaurants={this.state.restaurants}/>
+        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered}/>
+        <GoogleMap restaurants={this.state.filtered}/>
       </div>
     );
   }
