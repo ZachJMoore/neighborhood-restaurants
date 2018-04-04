@@ -22,7 +22,7 @@ class GoogleMap extends Component {
         >
           {this.props.restaurants.map(restaurant => {
               let rest = restaurant.restaurant
-              return <RestaurantMarker restaurant={rest} key={rest.id} lat={rest.location.latitude} lng={rest.location.longitude}/>
+              return <RestaurantMarker restaurant={rest} key={rest.id} lat={rest.location.latitude} lng={rest.location.longitude} isShown={rest.isShown}/>
           })}
         </GoogleMapReact>
       </div>

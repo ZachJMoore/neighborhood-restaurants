@@ -4,7 +4,7 @@ class RestaurantMarker extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isShown: this.props.restaurant.isShown
+            isShown: this.props.isShown //should be recieved from filtered restaurants from app.js. either true or false
         }
         this.styles = {open: "restaurant-details flex-container column details-shown", closed: "restaurant-details flex-container column"}
         this.getStyles = () => {
@@ -24,6 +24,10 @@ class RestaurantMarker extends Component {
     }
 
     render(){
+        if (this.props.isShown){
+            console.log("Props", this.props.isShown) //will be true
+            console.log("state", this.state.isShown) //should be true but is instead undefined
+        }
         return (<section className="restaurant-details-container">
             <a href="#open" className="marker" onClick={this.toggleStyles}>{this.props.restaurant.name}</a>
 

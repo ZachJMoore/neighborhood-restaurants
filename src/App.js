@@ -18,7 +18,6 @@ class App extends Component {
 
   componentDidMount(){
     getRestaurants().then(data => {
-      console.log(data.restaurants)
       this.setState({restaurants: data.restaurants})
       this.setState({filtered: data.restaurants})
     }).catch(error => {
@@ -26,6 +25,7 @@ class App extends Component {
     })
   }
   render() {
+    console.log(this.state.filtered) //able to check to see what value "isShown" is on the list of objects sent to map
     return (
       <div className="App flex-container">
         <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered}/>
