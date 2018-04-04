@@ -12,7 +12,7 @@ class SideBar extends Component {
         this.updateValue = (event) => {
             this.setState({searchValue: event.target.value}, this.filterRestaurants)
         }
-        this.filterRestaurants = () => { // v --------- Heres where we are looking --------- v
+        this.filterRestaurants = () => {
             const match = new RegExp(escapeRegExp(this.state.searchValue), "i") 
             let filtered = []
 
@@ -44,7 +44,7 @@ class SideBar extends Component {
             //update filtered object property in app.js state to pass down to map
             this.props.updateFiltered(filtered)
         }
-        
+
         //function to update the selected restaurant
         this.updateSelection = (id) => {
             this.setState({selectionId: id}, this.filterRestaurants)
@@ -52,9 +52,18 @@ class SideBar extends Component {
         }
     }
 
+
     componentWillReceiveProps(){
         if (this.state.filtered.length < 1) {
-            this.setState({filtered: this.props.restaurants})
+            this.setState({
+                filtered: this.props.restaurants.map(object => {
+                    let newObject = object;
+                    newObject.restaurant.isShown = false;
+
+                    return newObject
+
+                })
+            }, this.filterRestaurants())
         }
         
     }

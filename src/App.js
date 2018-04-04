@@ -17,18 +17,21 @@ class App extends Component {
   }
 
   componentDidMount(){
-    getRestaurants().then(data => {
-      this.setState({restaurants: data.restaurants})
-      this.setState({filtered: data.restaurants})
-    }).catch(error => {
+    getRestaurants()
+    .then(data => { //get restaurants from Zomato Api in "src/scripts/zomatoAPI.js"
+      this.setState({
+        restaurants: data.restaurants
+      })
+    })
+    .catch(error => {
       alert(error.message)
     })
   }
   render() {
-    console.log(this.state.filtered) //able to check to see what value "isShown" is on the list of objects sent to map
+    console.log(this.state.filtered) //log the filtered value which is abtained through SideBar.js
     return (
       <div className="App flex-container">
-        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered}/>
+        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} />
         <GoogleMap restaurants={this.state.filtered}/>
       </div>
     );

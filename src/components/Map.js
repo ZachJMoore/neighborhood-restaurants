@@ -19,6 +19,7 @@ class GoogleMap extends Component {
           bootstrapURLKeys={{ key: GoogleAPIKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
+          hoverDistance={0}
         >
           {this.props.restaurants.map(restaurant => {
               let rest = restaurant.restaurant
