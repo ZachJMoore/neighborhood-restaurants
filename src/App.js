@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       restaurants: [],
       filtered: [],
+      networkError: false
     }
     this.updateFiltered = (array) => {
       this.setState({filtered: array})
@@ -20,18 +21,25 @@ class App extends Component {
     getRestaurants()
     .then(data => { //get restaurants from Zomato Api in "src/scripts/zomatoAPI.js"
       this.setState({
-        restaurants: data.restaurants
+        restaurants: data.restaurants,
+        filtered: data.restaurants.map(ob => {
+          ob.restaurant.isShown = false;
+          return ob
+        })
       })
     })
     .catch(error => {
       alert(error.message)
+      if (!this.state.networkError) {
+        this.setState({networkError: true})
+      }
     })
   }
   render() {
-    console.log(this.state.filtered) //log the filtered value which is abtained through SideBar.js
+    console.log(this.state.filtered) //log the
     return (
       <div className="App flex-container">
-        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} />
+        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} networkError={this.state.networkError}/>
         <GoogleMap restaurants={this.state.filtered}/>
       </div>
     );

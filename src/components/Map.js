@@ -12,6 +12,17 @@ class GoogleMap extends Component {
     zoom: 12
   };
 
+  constructor(props){
+    super(props)
+    // this.state={
+    //   restaurants: []
+    // }
+  }
+
+  // componentWillReceiveProps(){
+  //   this.setState({restaurants: this.props.restaurants})
+  // }
+
   render() {
     return (
       <div style={{ height: '100vh', width: '100%' }}>

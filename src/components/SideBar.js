@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import escapeRegExp from "escape-string-regexp"
+import { placeholderRestaurants } from "../static/placeholderRestaurant";
 
 class SideBar extends Component {
     constructor(props){
@@ -38,6 +39,12 @@ class SideBar extends Component {
                 }
                 
             })
+
+            //if no results, return a placeholder
+            console.log(filtered[0])
+            if (filtered.length === 0){
+                filtered = placeholderRestaurants
+            }
             
             //then set filtered state to use for the list.
             this.setState({filtered: filtered})
@@ -54,16 +61,10 @@ class SideBar extends Component {
 
 
     componentWillReceiveProps(){
-        if (this.state.filtered.length < 1) {
-            this.setState({
-                filtered: this.props.restaurants.map(object => {
-                    let newObject = object;
-                    newObject.restaurant.isShown = false;
-
-                    return newObject
-
-                })
-            }, this.filterRestaurants())
+        if (!this.state.filtered.length){
+            this.filterRestaurants()
+        } else if (this.state.filtered[0].restaurant.placeholder && this.state.searchValue.length === 0 && !this.props.networkError){
+            this.filterRestaurants()
         }
         
     }
