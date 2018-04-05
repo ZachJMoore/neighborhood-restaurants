@@ -162,8 +162,8 @@ body {
 .menu-button-bar {
     background-color: rgb(224, 61, 61);
     border: 1px solid rgb(255, 255, 255);
-    width: 48px;
-    height: 8px;
+    width: 35px;
+    height: 5px;
     margin: 5px;
     border-radius: 4px;
     box-shadow: 2px 2px 5px #0003;

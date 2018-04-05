@@ -19,7 +19,7 @@ class RestaurantMarker extends Component {
         this.toggleStyles = () => {
             if (this.state.isShown){
                 this.setState({isShown: false})
-                if (this.props.restReferrer !== undefined){
+                if (this.props.restReferrer !== null){
                     this.props.restReferrer.focus() //Tab focus redirect: focus on link that sent someone here when item is closed. 
                 }
             } else {
