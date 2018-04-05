@@ -9,13 +9,13 @@ export class MenuButton extends Component {
         }
     }
     render(){
-        return (<div className="menu-button" onClick={this.handleClick}>
+        return (<button className="menu-button flex-container" onClick={this.handleClick} aria-label="toggle navigation menu">
             <section>
                 <div className="menu-button-bar"></div>
                 <div className="menu-button-bar"></div>
                 <div className="menu-button-bar"></div>
             </section>
-        </div>)
+        </button>)
     }
 }
     

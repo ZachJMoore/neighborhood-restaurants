@@ -98,10 +98,13 @@ body {
 /* Menu/Navigation */
 
 .menu-button {
+    background-color: #fff0;
+    border: none;
     z-index: 20;
     position: absolute;
     top: 5px;
     left: 5px;
+    width: 60px;
 }
 .menu-button:hover {
     cursor: pointer;

@@ -36,16 +36,16 @@ class RestaurantMarker extends Component {
 
     render(){
         return (<section className="restaurant-details-container">
-            <a href="#open" className="marker" onClick={this.toggleStyles}>{this.props.restaurant.name}</a>
+            <a href="#open" className="marker" onClick={this.toggleStyles}>{this.props.restaurant.name + " restaurant marker"}</a>
 
             <section className={this.state.isShown ? this.styles.open : this.styles.closed}>
-                <a href="#close" className="close" onClick={this.toggleStyles}>×</a>
-                <h2>{this.props.restaurant.name}</h2>
-                <ul>
-                    <li>Average Cost for Two: {this.props.restaurant.currency}{this.props.restaurant.average_cost_for_two}</li>
-                    <li>Cuisines: {this.props.restaurant.cuisines}</li>
+                <h2 tabIndex={0}>{this.props.restaurant.name}</h2>
+                <ul aria-label="searched restaurant list">
+                    <li tabIndex={0}>Average Cost for Two: {this.props.restaurant.currency}{this.props.restaurant.average_cost_for_two}</li>
+                    <li tabIndex={0}>Cuisines: {this.props.restaurant.cuisines}</li>
                 </ul>
-                <p>For more information click <a href={this.props.restaurant.url} target="_blank">here</a>.</p>
+                <p>For more information click <a href={this.props.restaurant.url} target="_blank" aria-label="more restaurant information">here</a>.</p>
+                <a href="#close" className="close" onClick={this.toggleStyles} aria-label="close details">×</a>
             </section>
 
         </section>)
