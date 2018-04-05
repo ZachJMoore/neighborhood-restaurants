@@ -3,6 +3,7 @@ import './App.css';
 import GoogleMap from './components/Map';
 import SideBar from "./components/SideBar"
 import { getRestaurants } from './scripts/zomatoAPI';
+import { MenuButton } from './components/MenuButton';
 
 class App extends Component {
   constructor(props){
@@ -10,10 +11,20 @@ class App extends Component {
     this.state = {
       restaurants: [],
       filtered: [],
-      networkError: false
+      networkError: false,
+      navIsShown: true
     }
     this.updateFiltered = (array) => {
       this.setState({filtered: array})
+    }
+    this.changeNavView = ()=>{
+      console.log("Everything Passed correctly")
+      if (this.state.navIsShown){
+        this.setState({navIsShown: false})
+      } else {
+        this.setState({navIsShown: true})
+      }
+      
     }
   }
 
@@ -38,8 +49,9 @@ class App extends Component {
   render() {
     console.log(this.state.filtered) //log the
     return (
-      <div className="App flex-container">
-        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} networkError={this.state.networkError}/>
+      <div className="app flex-container">
+        <MenuButton changeNavView={this.changeNavView}/>
+        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} networkError={this.state.networkError} navIsShown={this.state.navIsShown}/>
         <GoogleMap restaurants={this.state.filtered}/>
       </div>
     );

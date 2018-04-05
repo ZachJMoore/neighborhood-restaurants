@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { GoogleAPIKey } from '../static/APIKeys';
 import RestaurantMarker from "./RestaurantMarker";
 
+
 class GoogleMap extends Component {
   static defaultProps = {
     center: {
@@ -11,17 +12,6 @@ class GoogleMap extends Component {
     },
     zoom: 12
   };
-
-  constructor(props){
-    super(props)
-    // this.state={
-    //   restaurants: []
-    // }
-  }
-
-  // componentWillReceiveProps(){
-  //   this.setState({restaurants: this.props.restaurants})
-  // }
 
   render() {
     return (

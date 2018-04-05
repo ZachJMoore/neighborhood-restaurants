@@ -57,6 +57,8 @@ class SideBar extends Component {
             this.setState({selectionId: id}, this.filterRestaurants)
             
         }
+
+        this.styles = {open: "nav nav-shown", closed: "nav"}
     }
 
 
@@ -66,11 +68,10 @@ class SideBar extends Component {
         } else if (this.state.filtered[0].restaurant.placeholder && this.state.searchValue.length === 0 && !this.props.networkError){
             this.filterRestaurants()
         }
-        
     }
-    
+
     render(){
-        return (<nav className="nav">
+        return (<nav className={this.props.navIsShown ? this.styles.open : this.styles.closed}>
             <h1 className="text-center nav-title">Neighborhood Restaurants</h1>
             <section className="flex-container column full-width">
                 <label htmlFor="filterBox">Filter Restaruants</label>
