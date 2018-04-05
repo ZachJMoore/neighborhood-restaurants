@@ -4,7 +4,8 @@ class RestaurantMarker extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isShown: this.props.isShown
+            isShown: false,
+            override: false
         }
         this.styles = {open: "restaurant-details flex-container column details-shown", closed: "restaurant-details flex-container column"}
 
@@ -14,6 +15,22 @@ class RestaurantMarker extends Component {
             } else {
                 this.setState({isShown: true})
             }
+            this.setState({override: true})
+        }
+    }
+
+    componentDidUpdate(){
+
+        if (!this.state.isShown && !this.state.override && this.props.isShown){
+            this.setState({isShown: true})
+        } else if (this.state.isShown && !this.props.isShown && !this.state.override){
+            this.setState({isShown: false})
+        }
+    }
+
+    componentWillReceiveProps(){
+        if (!this.state.isShown && this.state.override){
+            this.setState({override: false})
         }
     }
 

@@ -11,7 +11,7 @@ class SideBar extends Component {
             selectionId: ""
         }
         this.updateValue = (event) => {
-            this.setState({searchValue: event.target.value}, this.filterRestaurants)
+            this.setState({searchValue: event.target.value, selectionId: ""}, this.filterRestaurants)
         }
         this.filterRestaurants = () => {
             const match = new RegExp(escapeRegExp(this.state.searchValue), "i") 
