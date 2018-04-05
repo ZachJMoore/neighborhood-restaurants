@@ -20,7 +20,7 @@ class RestaurantMarker extends Component {
             if (this.state.isShown){
                 this.setState({isShown: false})
                 if (this.props.restReferrer !== undefined){
-                    this.props.restReferrer.focus()
+                    this.props.restReferrer.focus() //Tab focus redirect: focus on link that sent someone here when item is closed. 
                 }
             } else {
                 this.setState({isShown: true})

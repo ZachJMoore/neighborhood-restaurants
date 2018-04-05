@@ -58,7 +58,7 @@ class SideBar extends Component {
         //function to update the selected restaurant, then filter restaurants again
         this.updateSelection = (id, ref) => {
             this.setState({selectionId: id}, this.filterRestaurants);
-            this.props.updateReferrer(ref)
+            this.props.updateReferrer(ref) //update app referer for sending tab focus back once marker is closed
         };
 
         this.styles = {open: "nav nav-shown", closed: "nav"};
