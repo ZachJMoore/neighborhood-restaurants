@@ -19,6 +19,9 @@ class RestaurantMarker extends Component {
         this.toggleStyles = () => {
             if (this.state.isShown){
                 this.setState({isShown: false})
+                if (this.props.restReferrer !== undefined){
+                    this.props.restReferrer.focus()
+                }
             } else {
                 this.setState({isShown: true})
             }

@@ -56,9 +56,9 @@ class SideBar extends Component {
         };
 
         //function to update the selected restaurant, then filter restaurants again
-        this.updateSelection = (id) => {
+        this.updateSelection = (id, ref) => {
             this.setState({selectionId: id}, this.filterRestaurants);
-            
+            this.props.updateReferrer(ref)
         };
 
         this.styles = {open: "nav nav-shown", closed: "nav"};
@@ -92,12 +92,14 @@ class SideBar extends Component {
     };
 };
 
-const ListItem = (props) => {
-    return (<li className="restaurant-li flex-container">
-        <a className="restaurant-link" href="#item" onClick={()=>{
-            props.updateSelection(props.id)
-        }}>{props.name}</a>
+class ListItem extends Component {
+    render(){
+        return (<li className="restaurant-li flex-container">
+        <a ref="link" className="restaurant-link" href="#item" onClick={()=>{
+            this.props.updateSelection(this.props.id, this.refs.link)
+        }}>{this.props.name}</a>
     </li>)
+    };
 };
 
 export default SideBar

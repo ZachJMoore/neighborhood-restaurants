@@ -15,11 +15,16 @@ class App extends Component {
       restaurants: [],
       filtered: [],
       networkError: false,
-      navIsShown: true
+      navIsShown: true,
+      restReferrer: null
     };
 
     this.updateFiltered = (array) => {
       this.setState({filtered: array});
+    };
+
+    this.updateReferrer = (ref) => {
+      this.setState({restReferrer: ref})
     };
 
     this.changeNavView = ()=>{
@@ -57,8 +62,8 @@ class App extends Component {
     return (
       <div className="app flex-container">
         <MenuButton changeNavView={this.changeNavView}/>
-        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} networkError={this.state.networkError} navIsShown={this.state.navIsShown}/>
-        <GoogleMap restaurants={this.state.filtered}/>
+        <SideBar restaurants={this.state.restaurants} updateFiltered={this.updateFiltered} updateReferrer={this.updateReferrer} networkError={this.state.networkError} navIsShown={this.state.navIsShown}/>
+        <GoogleMap restaurants={this.state.filtered} restReferrer={this.state.restReferrer}/>
       </div>
     );
   };

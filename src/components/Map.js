@@ -25,7 +25,7 @@ class GoogleMap extends Component {
         >
           {this.props.restaurants.map(restaurant => {
               let rest = restaurant.restaurant //zomato json structure is funky. set a more easily used ref
-              return <RestaurantMarker restaurant={rest} key={rest.id} lat={rest.location.latitude} lng={rest.location.longitude} isShown={rest.isShown}/>
+              return <RestaurantMarker restaurant={rest} key={rest.id} lat={rest.location.latitude} lng={rest.location.longitude} isShown={rest.isShown} restReferrer={this.props.restReferrer}/>
           })}
         </GoogleMapReact>
       </div>
