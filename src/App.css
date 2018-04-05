@@ -136,6 +136,11 @@ body {
     font-size: 0;
 }
 
+.marker-active {
+    background: linear-gradient(45deg, rgb(19, 148, 187), rgb(20, 255, 110));
+    z-index: 10;
+}
+
 .close {
     position: absolute;
     top: -4px;

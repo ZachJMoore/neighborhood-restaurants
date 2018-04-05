@@ -10,7 +10,11 @@ class RestaurantMarker extends Component {
             override: false
         };
 
-        this.styles = {open: "restaurant-details flex-container column details-shown", closed: "restaurant-details flex-container column"};
+        this.styles = {
+            open: "restaurant-details flex-container column details-shown",
+            closed: "restaurant-details flex-container column",
+            marker: "marker",
+            markerActive: "marker marker-active"};
 
         this.toggleStyles = () => {
             if (this.state.isShown){
@@ -41,25 +45,35 @@ class RestaurantMarker extends Component {
     };
 
     render(){
-        return (<section className="restaurant-details-container">
+        return (<section className="restaurant-details-container" {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})}>
 
             {/* marker icon */}
-            <a href="#open" className="marker" onClick={this.toggleStyles}>{this.props.restaurant.name + " restaurant marker"}</a>
+            <a ref={"marker"} href="#open" {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})} className={this.state.isShown ? this.styles.markerActive : this.styles.marker} onClick={this.toggleStyles}>{this.props.restaurant.name + " restaurant marker"}</a>
 
             {/* marker details section. */}
             {/* main functionality here: set styles for hidden or shown based on the restaurant isShown value */}
             <section className={this.state.isShown ? this.styles.open : this.styles.closed}>
-                <h2 tabIndex={0}>{this.props.restaurant.name}</h2>
+                <h2 {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})}>{this.props.restaurant.name}</h2>
                 <ul aria-label="searched restaurant list">
-                    <li tabIndex={0}>Average Cost for Two: {this.props.restaurant.currency}{this.props.restaurant.average_cost_for_two}</li>
-                    <li tabIndex={0}>Cuisines: {this.props.restaurant.cuisines}</li>
+                    <li {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})}>Average Cost for Two: {this.props.restaurant.currency}{this.props.restaurant.average_cost_for_two}</li>
+                    <li {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})}>Cuisines: {this.props.restaurant.cuisines}</li>
                 </ul>
-                <p>For more information click <a href={this.props.restaurant.url} target="_blank" aria-label="more restaurant information">here</a>.</p>
-                <a href="#close" className="close" onClick={this.toggleStyles} aria-label="close details">×</a>
+                <p>For more information click <a href={this.props.restaurant.url} {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})} target="_blank" aria-label="more restaurant information">here</a>.</p>
+                <a href="#close" {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})} className="close" onClick={this.toggleStyles} aria-label="close details">×</a>
             </section>
 
+        {/* Manage focus */}
+        {(()=>{
+                if (this.state.isShown){
+                    this.refs.marker.focus();
+                };
+            })()}
+
         </section>)
+        
     };
 };
 
 export default RestaurantMarker
+
+// {...(condition ? {bsStyle: 'success'} : {})}
