@@ -79,13 +79,12 @@ class SideBar extends Component {
 
     render(){
         return (<nav className={this.props.navIsShown ? this.styles.open : this.styles.closed}>
-
-            <h1 className="text-center nav-title">Neighborhood Restaurants</h1>
-            <section className="flex-container column flex-column-left full-width search-box-container">
-                <label htmlFor="searchBox" className="search-box-label">Search Restaruants:</label>
+            <h1 className="text-center nav-title" tabIndex={0}>Neighborhood Restaurants</h1>
+            <section className="flex-container column full-width search-box-container">
+                <label htmlFor="searchBox" className="search-box-label" tabIndex={0}>Search Restaruants:</label>
                 <input type="text" id="searchBox" placeholder="e.g. Texas Hot" className="search-box" onChange={this.updateValue} value={this.state.searchValue} aria-label="restaurant search field"/>
             </section>
-            <ul className="restaurants-list flex-container column flex-column-left full-width" aria-label="restaurant search results">
+            <ul className="restaurants-list" aria-label="restaurant search results">
                 {this.state.filtered.map(object => <ListItem name={object.restaurant.name} key={object.restaurant.id} id={object.restaurant.id} updateSelection={this.updateSelection}/>)}
             </ul>
             
@@ -94,7 +93,7 @@ class SideBar extends Component {
 };
 
 const ListItem = (props) => {
-    return (<li className="restaurant-li">
+    return (<li className="restaurant-li flex-container">
         <a className="restaurant-link" href="#item" onClick={()=>{
             props.updateSelection(props.id)
         }}>{props.name}</a>
