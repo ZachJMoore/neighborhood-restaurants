@@ -5,6 +5,7 @@ import RestaurantMarker from "./RestaurantMarker";
 
 
 class GoogleMap extends Component {
+
   static defaultProps = {
     center: {
       lat: 42.1192932,
@@ -23,13 +24,13 @@ class GoogleMap extends Component {
           hoverDistance={0}
         >
           {this.props.restaurants.map(restaurant => {
-              let rest = restaurant.restaurant
+              let rest = restaurant.restaurant //zomato json structure is funky. set a more easily used ref
               return <RestaurantMarker restaurant={rest} key={rest.id} lat={rest.location.latitude} lng={rest.location.longitude} isShown={rest.isShown}/>
           })}
         </GoogleMapReact>
       </div>
     );
-  }
-}
+  };
+};
 
 export default GoogleMap;

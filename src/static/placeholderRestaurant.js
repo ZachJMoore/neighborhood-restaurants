@@ -1,3 +1,4 @@
+//placeholder for when no results are found
 export const placeholderRestaurants = [{
     restaurant: {
         name: "No Restaurants Found.",
@@ -12,4 +13,4 @@ export const placeholderRestaurants = [{
         url: "https://www.zomato.com",
         placeholder: true
     }
-}]
+}];

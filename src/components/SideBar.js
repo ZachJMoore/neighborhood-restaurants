@@ -1,28 +1,32 @@
-import React, { Component } from "react"
-import escapeRegExp from "escape-string-regexp"
+import React, { Component } from "react";
+import escapeRegExp from "escape-string-regexp";
 import { placeholderRestaurants } from "../static/placeholderRestaurant";
 
 class SideBar extends Component {
+
     constructor(props){
-        super(props)
+        super(props);
+
         this.state = {
             searchValue: "",
             filtered: [],
             selectionId: ""
-        }
+        };
+
         this.updateValue = (event) => {
             this.setState({searchValue: event.target.value, selectionId: ""}, this.filterRestaurants)
-        }
+        };
+
         this.filterRestaurants = () => {
-            const match = new RegExp(escapeRegExp(this.state.searchValue), "i") 
-            let filtered = []
+            const match = new RegExp(escapeRegExp(this.state.searchValue), "i");
+            let filtered = [];
 
             //filter based on RegExp
             if (this.state.searchValue !== "") {
-                filtered = this.props.restaurants.filter((object) => match.test(object.restaurant.name))
+                filtered = this.props.restaurants.filter((object) => match.test(object.restaurant.name));
             } else {
-                filtered = this.props.restaurants
-            }
+                filtered = this.props.restaurants;
+            };
 
             //map over and set isShown value. If a item has been selected set isShown to true, otherwise set to false;
             filtered = filtered.map(object => {
@@ -30,60 +34,64 @@ class SideBar extends Component {
                     let newObject = object;
                     newObject.restaurant.isShown = true;
                     
-                    return newObject
+                    return newObject;
                 } else {
                     let newObject = object;
                     newObject.restaurant.isShown = false;
                     
-                    return newObject
+                    return newObject;
                 }
                 
-            })
+            });
 
             //if no results, return a placeholder
-            console.log(filtered[0])
             if (filtered.length === 0){
-                filtered = placeholderRestaurants
-            }
+                filtered = placeholderRestaurants;
+            };
             
             //then set filtered state to use for the list.
-            this.setState({filtered: filtered})
+            this.setState({filtered: filtered});
             //update filtered object property in app.js state to pass down to map
-            this.props.updateFiltered(filtered)
-        }
+            this.props.updateFiltered(filtered);
+        };
 
-        //function to update the selected restaurant
+        //function to update the selected restaurant, then filter restaurants again
         this.updateSelection = (id) => {
-            this.setState({selectionId: id}, this.filterRestaurants)
+            this.setState({selectionId: id}, this.filterRestaurants);
             
-        }
+        };
 
-        this.styles = {open: "nav nav-shown", closed: "nav"}
-    }
+        this.styles = {open: "nav nav-shown", closed: "nav"};
+    };
 
 
     componentWillReceiveProps(){
+        //if no filtered results run filterRestaruants. This keeps the listed items up to date and on first page load
         if (!this.state.filtered.length){
-            this.filterRestaurants()
+            this.filterRestaurants();
         } else if (this.state.filtered[0].restaurant.placeholder && this.state.searchValue.length === 0 && !this.props.networkError){
-            this.filterRestaurants()
-        }
-    }
+            //if the showing restaurant is a placeholder, and there is no search result, and it is not because of a network error, fitler restaurants again to update things.
+            //this is needed because of initial state when waiting for ajax request to come back and setState.
+            //an empty array is passed until that happens. this also helps if there is a ajax error and it will then just display a placeholder on the map
+            this.filterRestaurants();
+        };
+    };
 
     render(){
         return (<nav className={this.props.navIsShown ? this.styles.open : this.styles.closed}>
+
             <h1 className="text-center nav-title">Neighborhood Restaurants</h1>
             <section className="flex-container column full-width">
-                <label htmlFor="filterBox">Filter Restaruants</label>
-                <input type="text" id="filterBox" placeholder="e.g. Texas Hot" onChange={this.updateValue} value={this.state.searchValue} />
+                <label htmlFor="searchBox">Search Restaruants:</label>
+                <input type="text" id="searchBox" placeholder="e.g. Texas Hot" onChange={this.updateValue} value={this.state.searchValue} aria-label="restaurant search field"/>
             </section>
-            <ul className="restaurants-list">
+            <ul className="restaurants-list" aria-label="restaurant search results">
                 {this.state.filtered.map(object => <ListItem name={object.restaurant.name} key={object.restaurant.id} id={object.restaurant.id} updateSelection={this.updateSelection}/>)}
             </ul>
             
         </nav>)
-    }
-}
+    };
+};
 
 const ListItem = (props) => {
     return (<li>
@@ -91,6 +99,6 @@ const ListItem = (props) => {
             props.updateSelection(props.id)
         }}>{props.name}</a>
     </li>)
-}
+};
 
 export default SideBar

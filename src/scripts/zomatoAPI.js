@@ -1,4 +1,4 @@
-//Zomato api is non standard as well as unfriendly to web browers. Using a normal fetch request results in nothing.
+//Zomato api is non standard, and is unfriendly to web browsers. Using a normal fetch request results in nothing.
 //and it sends only a preflight request. Even with non standard headers it still fails.
 
 //There may be a fetch workaround, but until I find one, using this jquery workaround from https://stackoverflow.com/questions/33980212/ajax-request-with-headers-failing

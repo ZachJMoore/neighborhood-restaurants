@@ -6,27 +6,32 @@ import { getRestaurants } from './scripts/zomatoAPI';
 import { MenuButton } from './components/MenuButton';
 
 class App extends Component {
+
   constructor(props){
-    super(props)
+
+    super(props);
+
     this.state = {
       restaurants: [],
       filtered: [],
       networkError: false,
       navIsShown: true
-    }
+    };
+
     this.updateFiltered = (array) => {
-      this.setState({filtered: array})
-    }
+      this.setState({filtered: array});
+    };
+
     this.changeNavView = ()=>{
-      console.log("Everything Passed correctly")
+      //toggle navigation
       if (this.state.navIsShown){
-        this.setState({navIsShown: false})
+        this.setState({navIsShown: false});
       } else {
-        this.setState({navIsShown: true})
-      }
-      
-    }
-  }
+        this.setState({navIsShown: true});
+      };
+    };
+
+  };
 
   componentDidMount(){
     getRestaurants()
@@ -35,19 +40,20 @@ class App extends Component {
         restaurants: data.restaurants,
         filtered: data.restaurants.map(ob => {
           ob.restaurant.isShown = false;
-          return ob
+          return ob;
         })
-      })
+      });
     })
     .catch(error => {
-      alert(error.message)
+      alert(error.message);
       if (!this.state.networkError) {
-        this.setState({networkError: true})
+        this.setState({networkError: true}); //for error handling in SideBar.js
       }
-    })
-  }
+    });
+
+  };
+
   render() {
-    console.log(this.state.filtered) //log the
     return (
       <div className="app flex-container">
         <MenuButton changeNavView={this.changeNavView}/>
@@ -55,7 +61,7 @@ class App extends Component {
         <GoogleMap restaurants={this.state.filtered}/>
       </div>
     );
-  }
-}
+  };
+};
 
 export default App;
