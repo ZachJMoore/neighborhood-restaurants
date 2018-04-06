@@ -62,6 +62,7 @@ class RestaurantMarker extends Component {
                     <li {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})}>Cuisines: {this.props.restaurant.cuisines}</li>
                 </ul>
                 <p>For more information click <a href={this.props.restaurant.url} {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})} target="_blank" aria-label="more restaurant information">here</a>.</p>
+                <small>Data provided by Zomato</small>
                 <a href="#close" {...(this.state.isShown ? {tabIndex: 0} : {tabIndex: -1})} className="close" onClick={this.toggleStyles} aria-label="close details">×</a>
             </section>
 

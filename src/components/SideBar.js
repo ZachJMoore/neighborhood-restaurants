@@ -79,9 +79,9 @@ class SideBar extends Component {
 
     render(){
         return (<nav className={this.props.navIsShown ? this.styles.open : this.styles.closed}>
-            <h1 className="text-center nav-title" tabIndex={0}>Neighborhood Restaurants</h1>
+            <h1 className="text-center nav-title" >Neighborhood Restaurants</h1>
             <section className="flex-container column full-width search-box-container">
-                <label htmlFor="searchBox" className="search-box-label" tabIndex={0}>Search Restaruants:</label>
+                <label htmlFor="searchBox" className="search-box-label" >Search Restaruants:</label>
                 <input type="text" id="searchBox" placeholder="e.g. Texas Hot" className="search-box" onChange={this.updateValue} value={this.state.searchValue} aria-label="restaurant search field"/>
             </section>
             <ul className="restaurants-list" aria-label="restaurant search results">
