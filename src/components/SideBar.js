@@ -81,13 +81,13 @@ class SideBar extends Component {
         return (<nav className={this.props.navIsShown ? this.styles.open : this.styles.closed}>
             <h1 className="text-center nav-title" >Neighborhood Restaurants</h1>
             <section className="flex-container column full-width search-box-container">
-                <label htmlFor="searchBox" className="search-box-label" >Search Restaruants:</label>
+                <label htmlFor="searchBox" className="search-box-label" >Search Restaurants:</label>
                 <input type="text" id="searchBox" placeholder="e.g. Texas Hot" className="search-box" onChange={this.updateValue} value={this.state.searchValue} aria-label="restaurant search field"/>
             </section>
             <ul className="restaurants-list" aria-label="restaurant search results">
                 {this.state.filtered.map(object => <ListItem name={object.restaurant.name} key={object.restaurant.id} id={object.restaurant.id} updateSelection={this.updateSelection}/>)}
             </ul>
-            
+
         </nav>)
     };
 };
