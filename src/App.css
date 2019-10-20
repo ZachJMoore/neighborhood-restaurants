@@ -2,7 +2,7 @@ img,
 embed,
 object,
 video {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 h1,
@@ -11,7 +11,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Montserrat", "Open Sans", sans-serif;
+  font-family: "Montserrat", "Open Sans", sans-serif;
 }
 
 p,
@@ -21,207 +21,226 @@ small,
 label,
 input,
 button {
-    font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .flex-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .flex-wrap {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .flex-column-left {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 .space-around {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .no-padding {
-    padding: 0;
+  padding: 0;
 }
 
 .no-margin {
-    margin: 0;
+  margin: 0;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 /* ----------------- */
 
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 /* Navigation */
 
 .nav-title {
-    font-size: 35px;
-    padding-top: 30px;
-    font-weight: 400;
+  font-size: 32px;
+  padding-top: 30px;
+  font-weight: 300;
 }
 
 .nav {
-    z-index: 10;
-    display: none;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: absolute;
-    width: 0px;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.93);
-    box-shadow: 2px 2px 5px #0003;
-    padding: 10px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  width: 0px;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(239, 238, 236, 0.9);
+  box-shadow: 2px 2px 5px #0003;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.nav-shown{
-    width: 280px;
-    display: flex;
+.nav-shown {
+  width: 280px;
+  display: flex;
 }
 
-.search-box-container{
-    margin: 25px 0 25px 0;
-    padding: 10px;
+.search-box-container {
+  /* margin: 25px 0 25px 0; */
+  padding: 10px;
 }
 
-.search-box-label{
-    width: 100%;
-    text-align: center;
-    margin-bottom: 5px;
-
+.search-box-label {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
-.search-box{
-    width: 90%;
-    border: 1px solid lightgrey;
-    padding: 5px;
-    font-size: 14px;
-    border-radius: 2px;
+.search-box {
+  width: 90%;
+  border: none;
+  font-size: 14px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 0px;
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  overflow: hidden;
 }
 
 .restaurants-list {
-    list-style-type: none;
-    margin: 10px 0 25px 0;
-    padding: 0;
-    width: 100%;
+  list-style-type: none;
+  margin: 10px 0 25px 0;
+  padding: 0;
+  width: 100%;
 }
 
 .restaurant-li {
-    margin: 12px;
-    box-shadow: 2px 2px 8px #0004;
-    border-radius: 2px;
+  margin: 12px;
+  background-color: rgba(255, 255, 255, 1);
+  border: 0px;
+  margin: 10px;
+  padding: 0px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  overflow: hidden;
 }
 
 .restaurant-link {
-    text-align: center;
-    font-weight: 400;
-    width: 100%;
-    padding: 16px 0;
-    text-decoration: none;
+  text-align: center;
+  font-weight: 400;
+  width: 100%;
+  padding: 16px 0;
+  text-decoration: none;
 }
 
 /* Menu/Navigation */
 
 .menu-button {
-    background-color: #fff0;
-    border: none;
-    z-index: 20;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 60px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  margin: 10px;
+  padding: 0px;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  overflow: hidden;
+  z-index: 10000;
+  top: 0px;
+  left: 0px;
 }
 .menu-button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .menu-button-bar {
-    background-color: rgb(224, 61, 61);
-    border: 1px solid rgb(255, 255, 255);
-    width: 35px;
-    height: 5px;
-    margin: 5px;
-    border-radius: 4px;
-    box-shadow: 2px 2px 5px #0003;
+  background-color: rgba(102, 102, 102, 1);
+  width: 26px;
+  height: 2px;
+  margin: 6px;
+  border-radius: px;
 }
 
 /* Map */
 
 .marker {
-    background: linear-gradient(45deg, rgb(247, 25, 25), rgb(255, 155, 155));
-    border: 3px solid black;
-    width: 24px;
-    height: 24px;
-    border-radius: 100px 100px 100px 0;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: -36px;
-    left: -15px;
-    cursor: pointer;
-    color: #fff0;
-    font-size: 0;
+  background: linear-gradient(45deg, rgb(247, 25, 25), rgb(255, 155, 155));
+  border: 3px solid black;
+  width: 24px;
+  height: 24px;
+  border-radius: 100px 100px 100px 0;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -36px;
+  left: -15px;
+  cursor: pointer;
+  color: #fff0;
+  font-size: 0;
 }
 
 .marker-active {
-    background: linear-gradient(45deg, rgb(19, 148, 187), rgb(20, 255, 110));
-    z-index: 10;
+  background: linear-gradient(45deg, rgb(19, 148, 187), rgb(20, 255, 110));
+  z-index: 10;
 }
 
 .close {
-    position: absolute;
-    top: -4px;
-    right: 4px;
-    width: 15px;
-    height: 15px;
-    font-size: 25px;
-    color: #000;
-    text-decoration: none;
+  position: absolute;
+  top: -4px;
+  right: 4px;
+  width: 15px;
+  height: 15px;
+  font-size: 25px;
+  color: #000;
+  text-decoration: none;
 }
 .close:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.marker:hover ~ .restaurant-details{
-    display: block;
+.marker:hover ~ .restaurant-details {
+  display: block;
 }
 
-.restaurant-details{
-    z-index: 10;
-    display: none;
-    background-color: white;
-    border-radius: 2px;
-    box-shadow: 2px 2px 10px 1px #0004;
-    padding: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 250px;
+.restaurant-details {
+  z-index: 10;
+  display: none;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 2px 2px 10px 1px #0004;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
 }
 
 .details-shown {
-    display: block;
+  display: block;
 }
